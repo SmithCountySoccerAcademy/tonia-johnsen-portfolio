@@ -256,6 +256,7 @@ main {
   font-weight: 400;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  text-decoration: none;
   color: var(--ink-muted);
   white-space: nowrap;
   transition: color var(--ease);
@@ -264,6 +265,7 @@ main {
 .nav-links a:hover {
   color: var(--ink);
   opacity: 1;
+  text-decoration: none;
 }
 
 .nav-links a[aria-current="page"] {
@@ -271,15 +273,19 @@ main {
   opacity: 1;
 }
 
-.nav-links a[aria-current="page"]::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -0.35rem;
-  height: 1px;
-  background: var(--ink);
-  opacity: 0.35;
+/* Desktop-only active mark — never used in the hamburger panel */
+@media (min-width: 901px) {
+  .nav-links a[aria-current="page"]::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.4rem;
+    height: 1px;
+    background: var(--ink);
+    opacity: 0.3;
+    pointer-events: none;
+  }
 }
 
 /* Minimal two-line menu control */
@@ -2145,7 +2151,7 @@ body.view-modal-open {
     align-items: stretch;
     justify-content: flex-start;
     gap: 0;
-    padding: 0.25rem var(--gutter) calc(0.85rem + var(--safe-bottom));
+    padding: 0.15rem var(--gutter) calc(0.75rem + var(--safe-bottom));
     background: rgba(255, 255, 255, 0.98);
     border-bottom: 1px solid var(--line);
     max-height: calc(100dvh - var(--nav-h) - var(--safe-top));
@@ -2157,24 +2163,37 @@ body.view-modal-open {
     display: flex;
   }
 
-  .nav-links a {
-    padding: 0.95rem 0.15rem;
+  /* Separators on list items — not on the text itself */
+  .nav-links li {
     border-bottom: 1px solid var(--line);
+  }
+
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 1rem 0.1rem;
+    border: none;
+    border-bottom: none;
     font-size: 0.78rem;
     letter-spacing: 0.14em;
     color: var(--ink);
+    text-decoration: none;
+    line-height: 1.4;
   }
 
+  /* Kill desktop active underline in the open menu */
+  .nav-links a::after,
   .nav-links a[aria-current="page"]::after {
-    display: none;
+    content: none !important;
+    display: none !important;
   }
 
   .nav-links a[aria-current="page"] {
     opacity: 0.4;
-  }
-
-  .nav-links li:last-child a {
-    border-bottom: none;
+    text-decoration: none;
   }
 
   .piece-layout {
