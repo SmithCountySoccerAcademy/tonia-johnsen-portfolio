@@ -1609,6 +1609,53 @@ body.view-modal-open {
   min-height: 0;
 }
 
+/* Gallery snap: artwork only (no room views / buy chrome) */
+.gallery-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  max-height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.gallery-art:hover {
+  opacity: 1;
+}
+
+.gallery-art img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: min(72dvh, calc(100dvh - var(--nav-h) - 8rem));
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+}
+
+.gallery-slide .work-slide-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gallery-slide .work-slide-title a:hover {
+  opacity: 0.55;
+}
+
+.gallery-slide .work-slide-meta {
+  padding-top: 0.35rem;
+}
+
+@media (max-width: 899px) {
+  .gallery-art img {
+    max-height: min(62dvh, calc(100dvh - var(--nav-h) - 7rem));
+  }
+}
+
 .snap-scroller {
   height: 100svh;
   max-height: 100svh;

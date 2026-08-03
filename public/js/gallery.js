@@ -5,10 +5,6 @@
   const totalEl = document.getElementById("snap-total");
   if (!scroller) return;
 
-  if (window.EJ && window.EJ.bindBuyButtons) {
-    window.EJ.bindBuyButtons(scroller);
-  }
-
   const isCoarse = () =>
     window.matchMedia("(max-width: 899px), (hover: none)").matches;
 
@@ -19,11 +15,10 @@
   }
 
   function slideHTML(a, i, total, next) {
-    const price = window.EJ.formatPrice(a.priceCents);
     const e = (s) => window.EJ.escape(s);
     const isFirst = i === 0;
-    const canBuy = a.status === "available" && a.priceCents;
     const leadClass = isFirst ? " work-slide--lead" : "";
+    const src = a.image || a.thumb || "";
 
     let peek = "";
     if (next) {
@@ -42,45 +37,32 @@
         </button>`;
     }
 
-    const stage = window.EJ.views.stageHTML(a, {
-      compact: true,
-      className: `view-stage--slide${isFirst ? " view-stage--lead" : ""}`,
-    });
-
     const metaBits = [
       a.dimensions || "",
       a.medium || "",
       statusLabel(a.status),
     ].filter(Boolean);
 
-    const actions = canBuy
-      ? `<div class="work-slide-actions">
-           <button type="button" class="btn" data-buy="${e(a.id)}">Buy</button>
-           <a class="btn btn-outline" href="/piece.html?id=${encodeURIComponent(a.id)}">Details</a>
-         </div>`
-      : `<div class="work-slide-actions">
-           <a class="btn btn-outline" href="/piece.html?id=${encodeURIComponent(a.id)}">Details</a>
-         </div>`;
-
+    // Simple artwork only — no room views / multi-view stage
     return `
       <section
-        class="snap-slide work-slide${leadClass}"
+        class="snap-slide work-slide gallery-slide${leadClass}"
         data-slide="${i}"
         aria-label="${e(a.title)} (${i + 1} of ${total})"
       >
         <div class="work-slide-inner">
-          <div class="work-slide-art${isFirst ? " work-slide-art--lead" : ""}">
-            ${stage}
-          </div>
+          <a class="gallery-art" href="/piece.html?id=${encodeURIComponent(a.id)}">
+            <img
+              src="${src}"
+              alt="${e(a.title)}"
+              loading="${i < 2 ? "eager" : "lazy"}"
+            />
+          </a>
           <div class="work-slide-meta">
-            <h2 class="work-slide-title">${e(a.title)}</h2>
+            <h2 class="work-slide-title">
+              <a href="/piece.html?id=${encodeURIComponent(a.id)}">${e(a.title)}</a>
+            </h2>
             <p class="work-slide-size">${e(metaBits.join(" · "))}</p>
-            ${
-              canBuy && price
-                ? `<p class="work-slide-price">${price}</p>`
-                : ""
-            }
-            ${actions}
           </div>
         </div>
         ${peek}
@@ -153,9 +135,6 @@
     }
 
     bindNudge();
-    if (window.EJ && window.EJ.views) {
-      window.EJ.views.bindStages(scroller);
-    }
     scroller.addEventListener("scroll", updateProgress, { passive: true });
     window.addEventListener("resize", updateProgress, { passive: true });
     if (window.visualViewport) {
