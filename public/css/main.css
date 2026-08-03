@@ -1677,18 +1677,19 @@ body.view-modal-open {
 
 .work-slide-title {
   font-family: var(--font-serif);
-  font-size: clamp(1.25rem, 3vw, 1.85rem);
+  font-size: clamp(1.25rem, 2.6vw, 1.7rem);
   font-weight: 400;
-  margin: 0 0 0.2rem;
+  margin: 0 0 0.25rem;
   line-height: 1.2;
+  letter-spacing: 0.01em;
 }
 
 .work-slide--lead .work-slide-art--lead {
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.09);
+  box-shadow: none;
 }
 
 .work-slide--lead .work-slide-title {
-  font-size: clamp(1.4rem, 3.4vw, 2.05rem);
+  font-size: clamp(1.3rem, 2.8vw, 1.8rem);
 }
 
 .work-slide-size {
