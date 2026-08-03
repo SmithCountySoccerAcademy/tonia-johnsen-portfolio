@@ -51,13 +51,13 @@
           canBuy
             ? `<p class="price-lg">${price}</p>
                <button type="button" class="btn" data-buy="${e(piece.id)}">Buy</button>
-               <p class="faint" style="margin-top:1rem;font-size:0.85rem">Original painting. Stripe checkout connects when configured.</p>`
-            : `<p class="faint" style="margin:1.5rem 0">${
+               `
+            : `<p class="faint" style="margin:1.5rem 0 1.25rem">${
                 piece.status === "sold"
                   ? "This original has sold."
                   : "Not currently for sale."
               }</p>
-               <a class="btn btn-outline" href="/available.html">View available work</a>`
+               <a class="btn btn-outline" href="/available.html">Available work</a>`
         }
       </div>
     </div>`;

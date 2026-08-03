@@ -62,6 +62,9 @@ window.EJ = {
   /** Gallery card: image, title, size */
   galleryCard(a) {
     const sold = a.status === "sold";
+    const sizeLine = [a.dimensions, sold ? "Sold" : ""]
+      .filter(Boolean)
+      .join(" · ");
     return `
       <a class="work-card" href="/piece.html?id=${encodeURIComponent(a.id)}">
         <div class="work-media">
@@ -69,8 +72,7 @@ window.EJ = {
         </div>
         <div class="work-meta">
           <p class="title">${this.escape(a.title)}</p>
-          <p class="size">${this.escape(a.dimensions || "")}</p>
-          ${sold ? `<p class="status">Sold</p>` : ""}
+          <p class="size">${this.escape(sizeLine)}</p>
         </div>
       </a>`;
   },

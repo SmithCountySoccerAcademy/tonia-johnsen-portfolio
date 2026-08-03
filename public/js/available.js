@@ -18,14 +18,6 @@
 
     let peek = "";
     if (next) {
-      const hint = isFirst
-        ? isCoarse()
-          ? "Swipe up for the next original"
-          : "Scroll — or click — to see the next original"
-        : isCoarse()
-          ? "Swipe up"
-          : "Continue";
-
       peek = `
         <button type="button" class="slide-peek${isFirst ? " slide-peek--strong" : ""}" data-nudge aria-label="View next painting: ${e(next.title)}">
           <span class="slide-peek-fade" aria-hidden="true"></span>
@@ -34,9 +26,7 @@
               <img src="${next.image}" alt="" />
             </span>
             <span class="slide-peek-copy">
-              <span class="slide-peek-kicker">${isFirst ? "There’s more" : "Next"}</span>
               <span class="slide-peek-title">${e(next.title)}</span>
-              <span class="slide-peek-hint">${hint}</span>
             </span>
             <span class="slide-peek-chevron" aria-hidden="true"></span>
           </span>
@@ -59,11 +49,6 @@
             ${stage}
           </div>
           <div class="work-slide-meta">
-            ${
-              isFirst
-                ? `<p class="work-slide-kicker">Featured available work</p>`
-                : ""
-            }
             <h2 class="work-slide-title">${e(a.title)}</h2>
             <p class="work-slide-size">${e(a.dimensions || "")}${
               a.medium ? ` · ${e(a.medium)}` : ""
