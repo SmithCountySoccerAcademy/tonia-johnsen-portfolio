@@ -174,8 +174,24 @@ main {
   min-height: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   overflow: hidden;
   width: 100%;
+}
+
+/* Same horizontal measure as header nav — shared left/right edges */
+.page-home .site-header .wrap,
+.page-home .hero.wrap,
+.page-home .site-footer .wrap {
+  width: min(100% - (var(--home-gutter, var(--gutter)) * 2), var(--max));
+  margin-inline: auto;
+}
+
+@media (min-width: 901px) {
+  .page-home {
+    /* Wider side margins so content isn’t tight to the viewport */
+    --home-gutter: clamp(2rem, 6vw, 4.5rem);
+  }
 }
 
 /* Content pages: calm full-height band */
@@ -353,14 +369,14 @@ main {
 }
 
 /* —— Hero landing ——
-   Same .wrap as the header, so copy left edge = “Tonia Johnsen” brand edge.
-   Left: type. Right: painting centered under nav links.
+   Shared .wrap with header:
+   - Left edge of copy = left edge of “Tonia Johnsen”
+   - Painting centered in the right half (under nav links)
 */
 .hero {
   display: grid;
-  /* Text column sized to content; art takes remaining space under right nav */
-  grid-template-columns: minmax(16rem, 26rem) minmax(0, 1fr);
-  gap: clamp(2.5rem, 5vw, 4.5rem);
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
   align-items: center;
   width: 100%;
   min-height: 0;
@@ -371,15 +387,16 @@ main {
   box-sizing: border-box;
 }
 
-/* Flush with brand — no extra left offset */
+/* Left half: type starts on brand’s left edge, uses the column */
 .hero-copy {
   min-width: 0;
   width: 100%;
-  max-width: 26rem;
+  max-width: min(100%, 28rem);
   margin: 0;
-  padding: 0;
-  justify-self: start;
+  padding: 0 clamp(1.25rem, 3vw, 2.5rem) 0 0;
+  justify-self: stretch;
   align-self: center;
+  box-sizing: border-box;
 }
 
 .hero-kicker {
@@ -395,12 +412,12 @@ main {
 .hero-copy h1 {
   margin: 0 0 2rem;
   font-family: var(--font-serif);
-  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 400;
   line-height: 1.14;
   letter-spacing: -0.015em;
   color: var(--ink);
-  max-width: 12ch;
+  max-width: 13ch;
 }
 
 .hero-cta {
@@ -434,26 +451,28 @@ main {
   transform: translateX(3px);
 }
 
-/* Painting centered in the remaining (right) column → under nav links */
+/* Right half: painting dead-centered (matches right-side nav zone) */
 .hero-art {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   justify-self: stretch;
+  align-self: stretch;
   min-width: 0;
   min-height: 0;
   height: 100%;
   max-height: 100%;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 clamp(0.75rem, 2vw, 1.5rem);
+  box-sizing: border-box;
 }
 
 .hero-art img {
   display: block;
   width: auto;
   height: auto;
-  max-width: min(100%, 480px);
+  max-width: min(100%, 460px);
   max-height: min(76dvh, calc(100dvh - var(--nav-h) - var(--footer-h) - 2rem));
   object-fit: contain;
   object-position: center;
@@ -479,19 +498,22 @@ main {
 
 /* Mid widths */
 @media (max-width: 960px) and (min-width: 721px) {
-  .hero {
-    grid-template-columns: minmax(14rem, 22rem) minmax(0, 1fr);
-    gap: clamp(1.5rem, 3.5vw, 2.5rem);
-  }
-
   .hero-copy h1 {
     font-size: clamp(1.75rem, 3.2vw, 2.4rem);
     margin-bottom: 1.65rem;
   }
+
+  .hero-art img {
+    max-width: min(100%, 380px);
+  }
 }
 
-/* Mobile stack — still uses same wrap as nav for horizontal inset */
+/* Mobile stack — same wrap inset as nav brand */
 @media (max-width: 720px) {
+  .page-home {
+    --home-gutter: var(--gutter);
+  }
+
   .hero {
     display: flex;
     flex-direction: column;
@@ -504,7 +526,7 @@ main {
 
   .hero-copy {
     max-width: 20rem;
-    justify-self: center;
+    padding: 0;
   }
 
   .hero-copy h1 {
@@ -525,6 +547,7 @@ main {
     flex: 1 1 auto;
     width: min(100%, 340px);
     height: auto;
+    padding: 0;
   }
 
   .hero-art img {
