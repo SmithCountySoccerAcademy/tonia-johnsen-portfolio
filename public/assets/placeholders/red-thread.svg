@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" role="img" aria-label="Red Thread placeholder">
+  <rect width="800" height="1000" fill="#ebe6de"/>
+  <rect x="60" y="80" width="680" height="840" fill="#f7f3ec"/>
+  <path d="M120 220 C280 180 360 320 420 400 C500 510 560 480 680 560" fill="none" stroke="#cfc6b8" stroke-width="28" stroke-linecap="round"/>
+  <path d="M140 700 C260 640 340 760 480 720 C580 690 620 780 700 760" fill="none" stroke="#d9d1c4" stroke-width="40" stroke-linecap="round" opacity="0.7"/>
+  <path d="M180 300 C320 340 380 280 520 420 C600 500 640 470 700 540" fill="none" stroke="#8b3a2b" stroke-width="3" stroke-linecap="round"/>
+</svg>

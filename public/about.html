@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About · Tonia Johnsen</title>
+    <meta name="description" content="About painter Tonia Johnsen." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body class="page-screen">
+    <header class="site-header">
+      <div class="wrap nav">
+        <a class="brand" href="/">Tonia Johnsen</a>
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-links"
+          aria-label="Menu"
+        >
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
+        <ul class="nav-links" id="nav-links">
+          <li><a data-nav href="/gallery.html">Gallery</a></li>
+          <li><a data-nav href="/available.html">Available Work</a></li>
+          <li><a data-nav href="/commissions.html">Commissions</a></li>
+          <li><a data-nav href="/about.html">About</a></li>
+          <li><a data-nav href="/contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrap-narrow">
+        <header class="page-intro">
+          <h1>About</h1>
+        </header>
+        <div class="content-block">
+          <div class="about-body" id="bio">
+            <p>
+              Tonia Johnsen is an independent painter working in abstract and
+              expressive forms. Each piece is one of a kind—built through layers
+              of color, gesture, and quiet revision until the surface finds its
+              balance.
+            </p>
+            <p>
+              Her work is intended for living spaces: calm enough to live with,
+              strong enough to hold a wall. Available originals are ready for
+              their next home. Commissions are welcome when a space calls for
+              something made for it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <span>&copy; <span id="year"></span> Tonia Johnsen</span>
+      </div>
+    </footer>
+
+    <script src="/js/site.js"></script>
+    <script>
+      (async function () {
+        try {
+          const res = await fetch("/api/site");
+          if (!res.ok) return;
+          const site = await res.json();
+          if (!site.bio) return;
+          const el = document.getElementById("bio");
+          el.innerHTML = site.bio
+            .split(/\n\n+/)
+            .map((p) => `<p>${window.EJ.escape(p)}</p>`)
+            .join("");
+        } catch {
+          /* keep static bio */
+        }
+      })();
+    </script>
+  </body>
+</html>

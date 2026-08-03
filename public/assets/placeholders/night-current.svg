@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1125" viewBox="0 0 900 1125" role="img" aria-label="Night Current">
+  <rect width="900" height="1125" fill="#121820"/>
+  <path d="M0 200 C200 320 400 80 900 260 L900 500 L0 420 Z" fill="#1e3a52" opacity="0.9"/>
+  <path d="M0 450 C250 380 500 560 900 420 L900 780 L0 700 Z" fill="#2a5570" opacity="0.7"/>
+  <path d="M0 720 C300 640 550 820 900 700 L900 1125 L0 1125 Z" fill="#0d1218"/>
+  <path d="M60 600 C280 520 480 680 840 560" fill="none" stroke="#8eb4c8" stroke-width="2" opacity="0.3"/>
+</svg>

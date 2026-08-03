@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" role="img" aria-label="Studio Window placeholder">
+  <rect width="800" height="1000" fill="#d9cfc0"/>
+  <rect x="80" y="80" width="640" height="520" fill="#f2ebe0" stroke="#8a7d6d" stroke-width="10"/>
+  <line x1="400" y1="80" x2="400" y2="600" stroke="#8a7d6d" stroke-width="8"/>
+  <line x1="80" y1="340" x2="720" y2="340" stroke="#8a7d6d" stroke-width="8"/>
+  <rect x="110" y="110" width="260" height="200" fill="#c5d0c8" opacity="0.7"/>
+  <rect x="430" y="110" width="260" height="200" fill="#b7c4cf" opacity="0.55"/>
+  <rect x="110" y="370" width="260" height="200" fill="#cfb8a4" opacity="0.5"/>
+  <rect x="430" y="370" width="260" height="200" fill="#d8c7b0" opacity="0.45"/>
+  <rect x="160" y="680" width="220" height="160" fill="#ebe2d4" stroke="#6e6256" stroke-width="4"/>
+  <rect x="200" y="720" width="40" height="90" fill="#8b3a2b" opacity="0.75"/>
+  <rect x="260" y="740" width="36" height="70" fill="#3d4a54" opacity="0.7"/>
+  <rect x="460" y="720" width="180" height="24" fill="#6e6256" opacity="0.35"/>
+  <rect x="480" y="760" width="140" height="18" fill="#6e6256" opacity="0.25"/>
+</svg>

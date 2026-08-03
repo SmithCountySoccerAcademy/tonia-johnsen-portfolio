@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" role="img" aria-label="Pewter Bowl placeholder">
+  <rect width="800" height="1000" fill="#ddd5c8"/>
+  <ellipse cx="400" cy="720" rx="260" ry="40" fill="#c4b9a8" opacity="0.6"/>
+  <ellipse cx="400" cy="520" rx="180" ry="70" fill="#9aa0a6"/>
+  <path d="M220 520 Q220 680 400 720 Q580 680 580 520" fill="#7f868c"/>
+  <ellipse cx="400" cy="520" rx="160" ry="50" fill="#b7bdc2"/>
+  <ellipse cx="340" cy="500" rx="40" ry="18" fill="#e8ecf0" opacity="0.55"/>
+  <circle cx="300" cy="420" r="36" fill="#a63d2f" opacity="0.85"/>
+  <circle cx="360" cy="400" r="28" fill="#c4a035" opacity="0.8"/>
+  <circle cx="410" cy="430" r="32" fill="#6f8f4e" opacity="0.75"/>
+</svg>

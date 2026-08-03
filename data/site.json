@@ -1,0 +1,13 @@
+{
+  "artistName": "Tonia Johnsen",
+  "studioName": "Tonia Johnsen",
+  "tagline": "Original Paintings",
+  "email": "hello@toniajohnsen.com",
+  "location": "",
+  "bio": "Tonia Johnsen is an independent painter working in abstract and expressive forms. Each piece is one of a kind—built through layers of color, gesture, and quiet revision until the surface finds its balance.\n\nHer work is intended for living spaces: calm enough to live with, strong enough to hold a wall. Available originals are ready for their next home. Commissions are welcome when a space calls for something made for it.",
+  "heroCaption": "Featured work",
+  "shippingNote": "Original painting. Shipping arranged after purchase; local pickup available on request.",
+  "commission": {
+    "blurb": "Looking for a piece sized or colored for a specific room? Commissions begin with a short conversation about scale, palette, and mood. Each custom work is painted to order and delivered when complete."
+  }
+}

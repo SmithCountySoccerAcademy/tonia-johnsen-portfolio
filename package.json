@@ -1,0 +1,20 @@
+{
+  "name": "artist-portfolio",
+  "version": "1.0.0",
+  "description": "Artist portfolio with original sales (Stripe) and commission inquiries",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "stripe": "^16.12.0"
+  }
+}

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" role="img" aria-label="Evening Road placeholder">
+  <defs>
+    <linearGradient id="eve" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a2f45"/>
+      <stop offset="40%" stop-color="#8b5a4a"/>
+      <stop offset="100%" stop-color="#1e1814"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#eve)"/>
+  <ellipse cx="400" cy="260" rx="120" ry="40" fill="#e8b89a" opacity="0.35"/>
+  <path d="M280 1000 L380 420 L420 420 L520 1000 Z" fill="#2a2420"/>
+  <path d="M0 520 C200 480 300 560 400 500 C520 430 650 520 800 480 L800 1000 L0 1000 Z" fill="#241e1a" opacity="0.9"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1125" viewBox="0 0 900 1125" role="img" aria-label="Ember Field">
+  <rect width="900" height="1125" fill="#1a1410"/>
+  <rect y="0" width="900" height="420" fill="#3d2418"/>
+  <path d="M0 280 C200 200 400 360 900 220 L900 700 L0 780 Z" fill="#8b3a1f" opacity="0.9"/>
+  <path d="M0 480 C280 420 500 560 900 400 L900 900 L0 980 Z" fill="#c46a2e" opacity="0.75"/>
+  <path d="M0 700 C250 640 520 780 900 680 L900 1125 L0 1125 Z" fill="#2a1c14"/>
+  <path d="M120 300 C300 380 420 200 700 340" fill="none" stroke="#e8b48a" stroke-width="3" opacity="0.35"/>
+  <path d="M80 820 C340 700 560 900 860 760" fill="none" stroke="#1a1410" stroke-width="18" opacity="0.25"/>
+</svg>

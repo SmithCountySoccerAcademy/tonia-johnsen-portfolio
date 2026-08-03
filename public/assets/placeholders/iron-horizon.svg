@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1125" viewBox="0 0 900 1125" role="img" aria-label="Iron Horizon">
+  <rect width="900" height="1125" fill="#e4e0d8"/>
+  <rect y="0" width="900" height="620" fill="#cfc9be"/>
+  <rect y="580" width="900" height="90" fill="#2c2c2c"/>
+  <rect y="670" width="900" height="455" fill="#8a857c"/>
+  <path d="M0 560 C300 540 600 590 900 555" fill="none" stroke="#f7f5f0" stroke-width="1.5" opacity="0.4"/>
+</svg>

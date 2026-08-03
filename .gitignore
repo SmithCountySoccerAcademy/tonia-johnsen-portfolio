@@ -1,0 +1,9 @@
+node_modules/
+.env
+data/commissions.json
+data/inquiries.json
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/

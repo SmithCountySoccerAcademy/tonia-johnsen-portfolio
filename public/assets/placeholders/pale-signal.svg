@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1125" viewBox="0 0 900 1125" role="img" aria-label="Pale Signal">
+  <rect width="900" height="1125" fill="#eceae6"/>
+  <rect y="200" width="900" height="700" fill="#ddd9d2"/>
+  <path d="M200 300 C400 500 500 400 700 820" fill="none" stroke="#b8a090" stroke-width="2" opacity="0.7"/>
+  <rect x="180" y="480" width="540" height="1" fill="#8a8078" opacity="0.5"/>
+  <circle cx="620" cy="480" r="6" fill="#8b3a2b" opacity="0.8"/>
+</svg>
