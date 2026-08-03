@@ -6,7 +6,7 @@
     <title>Tonia Johnsen · Original Paintings</title>
     <meta
       name="description"
-      content="Original paintings by Tonia Johnsen — one-of-a-kind works for living spaces."
+      content="Original paintings by Tonia Johnsen."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body class="page-home">
-    <header class="site-header site-header--home">
+    <header class="site-header">
       <div class="wrap nav">
         <a class="brand" href="/">Tonia Johnsen</a>
         <button
@@ -42,27 +42,24 @@
     </header>
 
     <main class="home-main">
-      <section class="hero wrap">
+      <section class="hero wrap" aria-label="Featured work">
         <div class="hero-copy">
-          <h1>Original Paintings</h1>
-          <p class="subtitle">
-            One-of-a-kind works made for living with—quiet, considered, and
-            entirely unique.
-          </p>
-          <div class="hero-actions">
-            <a class="btn" href="/available.html">Available work</a>
-            <a class="hero-link" href="/gallery.html">View gallery</a>
-          </div>
+          <p class="hero-kicker">Original paintings</p>
+          <h1>Work that holds a wall&nbsp;— and a room.</h1>
+          <a class="hero-cta" href="/available.html">
+            Available work
+            <span class="hero-cta-arrow" aria-hidden="true">→</span>
+          </a>
         </div>
 
-        <figure class="hero-frame">
-          <div class="hero-image-wrap">
-            <img
-              id="hero-image"
-              src="/assets/placeholders/ember-field.svg"
-              alt="Featured painting"
-            />
-          </div>
+        <figure class="hero-art">
+          <img
+            id="hero-image"
+            src="/assets/placeholders/ember-field.svg"
+            alt="Featured painting"
+            width="800"
+            height="1000"
+          />
           <figcaption id="hero-caption">Ember Field · 36 × 48 in</figcaption>
         </figure>
       </section>

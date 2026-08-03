@@ -143,11 +143,16 @@ main {
   max-height: 100svh;
   max-height: 100dvh;
   overflow: hidden;
-  background: var(--white);
+  background: #fff;
 }
 
-.page-home .site-header--home {
-  background: rgba(255, 255, 255, 0.86);
+.page-home .site-header {
+  background: #fff;
+  border-bottom: none;
+}
+
+.page-home .site-header.is-scrolled {
+  border-bottom: none;
 }
 
 .page-home .site-footer {
@@ -155,15 +160,20 @@ main {
 }
 
 .page-home .site-footer--home {
-  border-top-color: transparent;
-  opacity: 0.9;
+  border-top: none;
+}
+
+.page-home .footer-inner {
+  opacity: 0.45;
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
 }
 
 .page-home .home-main {
   flex: 1 1 auto;
   min-height: 0;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   overflow: hidden;
   width: 100%;
 }
@@ -342,241 +352,203 @@ main {
   width: 100%;
 }
 
-/* —— Hero (home) ——
-   Editorial gallery landing:
-   - Art leads on the right, large and unframed
-   - Copy on the left with generous measure and quiet CTAs
-   - Full pair sits in the header content width (art under right nav)
+/* —— Hero landing ——
+   Clean white-wall layout:
+   left = sparse type, right = large painting (under nav links).
 */
 .hero {
-  flex: 1 1 auto;
   display: grid;
-  grid-template-columns: minmax(16rem, 0.92fr) minmax(0, 1.18fr);
-  column-gap: clamp(2rem, 5vw, 5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: clamp(2rem, 6vw, 5.5rem);
   align-items: center;
+  width: 100%;
   min-height: 0;
   height: 100%;
   max-height: 100%;
-  padding: clamp(0.5rem, 2vh, 1.25rem) 0;
+  padding: 0;
   overflow: hidden;
-  width: 100%;
 }
 
+/* Left: type block */
 .hero-copy {
   min-width: 0;
-  max-width: 28rem;
-  align-self: center;
-  padding-block: 0.5rem;
+  max-width: 22rem;
+  padding-bottom: 0.25rem;
+}
+
+.hero-kicker {
+  margin: 0 0 1.15rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
 }
 
 .hero-copy h1 {
-  margin: 0 0 1rem;
-  font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+  margin: 0 0 2.25rem;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.8vw, 3.15rem);
   font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
   color: var(--ink);
+  max-width: 11ch;
 }
 
-.hero-copy .subtitle {
-  margin: 0 0 2rem;
-  max-width: 28ch;
-  font-family: var(--font-sans);
-  font-size: clamp(0.92rem, 1.1vw, 1.02rem);
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.65;
-  letter-spacing: 0.01em;
-  color: var(--ink-muted);
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
+/* Text-style CTA — quieter than a solid button on a gallery page */
+.hero-cta {
+  display: inline-flex;
   align-items: center;
-  gap: 1.1rem 1.5rem;
-}
-
-.hero-actions .btn {
-  padding: 0.78rem 1.35rem;
-  letter-spacing: 0.14em;
-}
-
-/* Quiet secondary action */
-.hero-link {
-  font-size: 0.68rem;
+  gap: 0.55rem;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
   font-weight: 400;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ink-muted);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 0.15rem;
-  transition: color var(--ease), border-color var(--ease);
-}
-
-.hero-link:hover {
   color: var(--ink);
-  border-bottom-color: rgba(22, 22, 22, 0.25);
-  opacity: 1;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(22, 22, 22, 0.35);
+  padding: 0.15rem 0 0.35rem;
+  transition: border-color var(--ease), opacity var(--ease);
 }
 
-/* Artwork: unframed, generous, centered in the right column */
-.hero-frame {
+.hero-cta:hover {
+  opacity: 1;
+  border-bottom-color: var(--ink);
+}
+
+.hero-cta-arrow {
+  font-size: 0.95em;
+  line-height: 1;
+  transition: transform var(--ease);
+}
+
+.hero-cta:hover .hero-cta-arrow {
+  transform: translateX(3px);
+}
+
+/* Right: painting, large and centered in its column */
+.hero-art {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  justify-self: stretch;
-  align-self: stretch;
   min-width: 0;
   min-height: 0;
-  margin: 0;
-  padding: 0;
   height: 100%;
   max-height: 100%;
-  background: transparent;
-  border: none;
-  box-shadow: none;
+  margin: 0;
+  padding: 0;
 }
 
-.hero-image-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1 1 auto;
-  min-height: 0;
-  width: 100%;
-  max-height: 100%;
-}
-
-.hero-frame img {
+.hero-art img {
   display: block;
   width: auto;
   height: auto;
-  max-width: min(100%, 520px);
-  max-height: min(74dvh, calc(100dvh - var(--nav-h) - var(--footer-h) - 3.5rem));
+  max-width: 100%;
+  max-height: min(78dvh, calc(100dvh - var(--nav-h) - var(--footer-h) - 2rem));
   object-fit: contain;
   object-position: center;
   background: transparent;
+  opacity: 0;
+  transition: opacity 0.55s ease;
 }
 
-.hero-frame figcaption,
-.hero-caption {
-  flex-shrink: 0;
-  margin: 0.85rem 0 0;
-  font-size: 0.62rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  text-align: center;
-  width: 100%;
-}
-
-/* Soft fade-in when featured image loads */
-.page-home .hero-frame img {
-  opacity: 0.001;
-  transition: opacity 0.45s ease;
-}
-
-.page-home.hero-ready .hero-frame img {
+.page-home.hero-ready .hero-art img {
   opacity: 1;
 }
 
-/* Tablet: keep side-by-side, tighten measure */
-@media (max-width: 960px) and (min-width: 701px) {
+.hero-art figcaption,
+#hero-caption {
+  margin: 1rem 0 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: center;
+}
+
+/* Mid widths */
+@media (max-width: 960px) and (min-width: 721px) {
   .hero {
-    grid-template-columns: minmax(14rem, 0.88fr) minmax(0, 1.12fr);
-    column-gap: clamp(1.25rem, 3vw, 2.25rem);
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.1fr);
   }
 
   .hero-copy h1 {
-    font-size: clamp(1.85rem, 3.5vw, 2.6rem);
-  }
-
-  .hero-frame img {
-    max-width: min(100%, 420px);
+    font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+    margin-bottom: 1.75rem;
   }
 }
 
-/* Phone: composed stack — type, then artwork */
-@media (max-width: 700px) {
+/* Mobile stack */
+@media (max-width: 720px) {
   .hero {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: clamp(1rem, 3vh, 1.5rem);
-    padding: 0.35rem 0 0.5rem;
+    gap: 1.35rem;
     text-align: center;
+    padding: 0.25rem 0;
   }
 
   .hero-copy {
-    max-width: 22rem;
-    padding-block: 0;
+    max-width: 20rem;
   }
 
   .hero-copy h1 {
-    font-size: clamp(1.7rem, 7vw, 2.2rem);
-    margin-bottom: 0.65rem;
+    max-width: none;
+    margin: 0 auto 1.35rem;
+    font-size: clamp(1.65rem, 7vw, 2.15rem);
   }
 
-  .hero-copy .subtitle {
-    margin: 0 auto 1.25rem;
-    max-width: 28ch;
+  .hero-kicker {
+    margin-bottom: 0.85rem;
   }
 
-  .hero-actions {
-    justify-content: center;
+  .hero-cta {
+    margin-inline: auto;
   }
 
-  .hero-frame {
+  .hero-art {
     flex: 1 1 auto;
-    width: 100%;
-    max-width: min(360px, 100%);
+    width: min(100%, 340px);
     height: auto;
-    align-self: center;
   }
 
-  .hero-image-wrap {
-    flex: 0 1 auto;
+  .hero-art img {
+    max-height: min(50dvh, calc(100dvh - var(--nav-h) - var(--footer-h) - 11rem));
+    width: 100%;
   }
 
-  .hero-frame img {
-    max-width: 100%;
-    max-height: min(46dvh, calc(100dvh - var(--nav-h) - var(--footer-h) - 12rem));
-  }
-
-  .hero-frame figcaption {
-    margin-top: 0.6rem;
+  .hero-art figcaption {
+    margin-top: 0.75rem;
   }
 }
 
-@media (max-height: 680px) and (max-width: 700px) {
+@media (max-height: 640px) and (max-width: 720px) {
   .hero {
-    gap: 0.75rem;
+    gap: 0.85rem;
   }
 
-  .hero-copy h1 {
-    font-size: 1.45rem;
-    margin-bottom: 0.4rem;
-  }
-
-  .hero-copy .subtitle {
-    font-size: 0.88rem;
-    margin-bottom: 0.85rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .hero-frame figcaption {
+  .hero-kicker {
     display: none;
   }
 
-  .hero-frame img {
-    max-height: min(42dvh, calc(100dvh - var(--nav-h) - var(--footer-h) - 9rem));
+  .hero-copy h1 {
+    font-size: 1.4rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .hero-art figcaption {
+    display: none;
+  }
+
+  .hero-art img {
+    max-height: min(48dvh, calc(100dvh - var(--nav-h) - var(--footer-h) - 7.5rem));
   }
 }
 
