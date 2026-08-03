@@ -162,8 +162,9 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   min-height: 0;
-  width: min(100% - (var(--gutter) * 2), 720px);
+  width: min(100% - (var(--gutter) * 2), 960px);
   height: 100%;
 }
 
@@ -342,29 +343,30 @@ main {
 }
 
 /* —— Hero (home) ——
-   Centered stack on all sizes: intro above, painting below (no left/right split).
-   Painting is shown bare — no card/frame chrome. */
+   Text beside painting, pair centered on the page (not pinned far left).
+   Painting bare — no card chrome. */
 .hero {
   flex: 1 1 auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: clamp(1rem, 2.5vh, 1.75rem);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
   min-height: 0;
   height: 100%;
   max-height: 100%;
-  padding: 0.5rem 0;
+  padding: 0.75rem 0;
   overflow: hidden;
-  text-align: center;
+  text-align: left;
+  width: 100%;
 }
 
 .hero-copy {
-  flex: 0 0 auto;
+  flex: 0 1 18rem;
   min-width: 0;
-  width: 100%;
-  max-width: 28rem;
-  text-align: center;
+  width: auto;
+  max-width: 20rem;
+  text-align: left;
 }
 
 .hero-copy .eyebrow {
@@ -372,41 +374,41 @@ main {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--ink-faint);
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.85rem;
 }
 
 .hero-copy h1 {
-  margin-bottom: 0.45rem;
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  margin-bottom: 0.5rem;
+  font-size: clamp(1.7rem, 3.2vw, 2.65rem);
   line-height: 1.12;
 }
 
 .hero-copy .subtitle {
   font-family: var(--font-serif);
-  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
   font-style: italic;
   font-weight: 400;
   color: var(--ink-muted);
-  margin: 0 auto 1.25rem;
-  max-width: 24ch;
+  margin: 0 0 1.4rem;
+  max-width: 18ch;
   line-height: 1.4;
 }
 
 .hero-copy .btn {
-  margin-inline: auto;
+  margin-inline: 0;
 }
 
 /* Bare painting — no card, border, or fill box */
 .hero-frame {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-width: 0;
   min-height: 0;
-  width: 100%;
-  max-width: min(520px, 100%);
+  width: auto;
+  max-width: min(48vw, 480px);
   height: auto;
   max-height: 100%;
   margin: 0;
@@ -422,7 +424,7 @@ main {
   width: auto;
   height: auto;
   max-width: 100%;
-  max-height: min(58dvh, calc(100dvh - var(--nav-h) - var(--footer-h) - 11rem));
+  max-height: min(70dvh, calc(100dvh - var(--nav-h) - var(--footer-h) - 3rem));
   object-fit: contain;
   object-position: center;
   background: transparent;
@@ -433,7 +435,7 @@ main {
 .hero-frame figcaption,
 .hero-caption {
   flex-shrink: 0;
-  margin: 0.65rem 0 0;
+  margin: 0.6rem 0 0;
   font-size: 0.65rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -442,46 +444,53 @@ main {
   width: 100%;
 }
 
-@media (max-width: 759px) {
+/* Narrow screens: stack so painting still fits */
+@media (max-width: 700px) {
   .hero {
-    gap: clamp(0.65rem, 2vh, 1rem);
-    padding: 0.2rem 0 0.35rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(0.75rem, 2vh, 1.15rem);
+    padding: 0.25rem 0 0.4rem;
+    text-align: center;
   }
 
-  .hero-copy h1 {
-    font-size: clamp(1.5rem, 6.5vw, 2rem);
+  .hero-copy {
+    flex: 0 0 auto;
+    max-width: min(22rem, 100%);
+    text-align: center;
   }
 
   .hero-copy .subtitle {
-    font-size: clamp(0.95rem, 3.2vw, 1.1rem);
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 0.9rem;
   }
 
   .hero-copy .btn {
+    margin-inline: auto;
     padding: 0.65rem 1.15rem;
     min-height: 2.75rem;
   }
 
   .hero-frame {
-    max-width: min(400px, 100%);
+    flex: 1 1 auto;
+    max-width: min(380px, 100%);
+    width: 100%;
   }
 
   .hero-frame img {
     max-height: min(48dvh, calc(100dvh - var(--nav-h) - var(--footer-h) - 10rem));
   }
-
-  .hero-frame figcaption {
-    margin-top: 0.45rem;
-  }
 }
 
-@media (max-height: 680px) {
+@media (max-height: 680px) and (max-width: 700px) {
   .hero-copy .eyebrow {
     display: none;
   }
 
   .hero-copy h1 {
-    font-size: clamp(1.3rem, 4vw, 1.55rem);
+    font-size: clamp(1.3rem, 5vw, 1.5rem);
   }
 
   .hero-copy .subtitle {
@@ -495,54 +504,6 @@ main {
 
   .hero-frame img {
     max-height: min(46dvh, calc(100dvh - var(--nav-h) - var(--footer-h) - 7.5rem));
-  }
-}
-
-@media (max-height: 480px) and (orientation: landscape) {
-  .page-home {
-    overflow: auto;
-    height: auto;
-    max-height: none;
-    min-height: 100dvh;
-  }
-
-  .page-home .home-main {
-    overflow: visible;
-  }
-
-  .hero {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 1.25rem 1.75rem;
-    height: auto;
-    max-height: none;
-    min-height: calc(100dvh - var(--nav-h) - var(--footer-h) - 0.5rem);
-    text-align: left;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .hero-copy {
-    text-align: left;
-    max-width: 16rem;
-    flex: 0 1 auto;
-  }
-
-  .hero-copy .btn {
-    margin-inline: 0;
-  }
-
-  .hero-frame {
-    flex: 1 1 auto;
-    max-width: min(42vw, 360px);
-  }
-
-  .hero-frame img {
-    max-height: calc(100dvh - var(--nav-h) - var(--footer-h) - 2rem);
-  }
-
-  .hero-frame figcaption {
-    display: none;
   }
 }
 
