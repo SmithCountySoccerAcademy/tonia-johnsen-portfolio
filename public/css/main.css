@@ -11,12 +11,13 @@
   --font-serif: "Cormorant Garamond", "Times New Roman", Georgia, serif;
   --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --max: 1200px;
-  --nav-h: 4.5rem;
-  --footer-h: 2.75rem;
-  --space: clamp(1.5rem, 4vw, 4rem);
-  --gutter: clamp(1rem, 4vw, 2rem);
-  /* full viewport minus sticky chrome */
+  --nav-h: clamp(3.5rem, 6vw, 4.5rem);
+  --footer-h: clamp(2.35rem, 4vw, 2.75rem);
+  --space: clamp(1.25rem, 4vw, 4rem);
+  --gutter: clamp(0.85rem, 3.5vw, 2rem);
   --view-h: calc(100dvh - var(--nav-h) - var(--footer-h));
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
 }
 
 *,
@@ -36,13 +37,15 @@ body {
   display: flex;
   flex-direction: column;
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: clamp(14px, 0.35vw + 13.5px, 16px);
   font-weight: 400;
   line-height: 1.65;
   letter-spacing: 0.01em;
   color: var(--ink);
   background: var(--white);
   -webkit-font-smoothing: antialiased;
+  padding-left: env(safe-area-inset-left, 0);
+  padding-right: env(safe-area-inset-right, 0);
 }
 
 img {
@@ -176,6 +179,7 @@ main {
   z-index: 50;
   flex-shrink: 0;
   height: var(--nav-h);
+  padding-top: var(--safe-top);
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
@@ -209,18 +213,21 @@ main {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: clamp(0.75rem, 2vw, 2rem);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: clamp(0.55rem, 1.5vw, 1.75rem);
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .nav-links a {
-  font-size: 0.75rem;
+  font-size: clamp(0.65rem, 0.9vw, 0.75rem);
   font-weight: 400;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink);
+  white-space: nowrap;
 }
 
 .nav-links a[aria-current="page"] {
@@ -401,80 +408,98 @@ main {
   width: 100%;
 }
 
-/* Mobile: one landing view — text + painting together */
-@media (max-width: 899px) {
+/* Tablet portrait / small laptop: still side-by-side if wide enough */
+@media (max-width: 1024px) and (min-width: 760px) {
+  .hero {
+    gap: 1.25rem 1.75rem;
+    padding: 0.4rem 0;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(1.65rem, 3vw, 2.4rem);
+  }
+
+  .hero-copy .subtitle {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    margin-bottom: 1rem;
+  }
+}
+
+/* Stacked home: text + painting on one screen */
+@media (max-width: 759px) {
   .hero {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.35rem 0 0.5rem;
+    gap: clamp(0.5rem, 2vh, 0.9rem);
+    padding: 0.25rem 0 0.4rem;
     text-align: center;
   }
 
   .hero-copy {
     flex: 0 0 auto;
     text-align: center;
-    max-width: 22rem;
+    max-width: min(22rem, 100%);
   }
 
   .hero-copy .eyebrow {
-    margin-bottom: 0.4rem;
-  }
-
-  .hero-copy h1 {
-    font-size: clamp(1.55rem, 6.5vw, 2rem);
     margin-bottom: 0.35rem;
   }
 
+  .hero-copy h1 {
+    font-size: clamp(1.45rem, 6.5vw, 2rem);
+    margin-bottom: 0.3rem;
+  }
+
   .hero-copy .subtitle {
-    font-size: 0.98rem;
-    margin: 0 auto 0.85rem;
+    font-size: clamp(0.92rem, 3.2vw, 1.05rem);
+    margin: 0 auto 0.75rem;
   }
 
   .hero-copy .btn {
     margin-inline: auto;
-    padding: 0.7rem 1.2rem;
+    padding: 0.65rem 1.15rem;
     width: auto;
     max-width: none;
+    min-height: 2.75rem;
   }
 
   .hero-frame {
     flex: 1 1 auto;
     width: 100%;
-    max-width: min(360px, 92vw);
+    max-width: min(380px, 100%);
     min-height: 0;
-    /* Takes remaining viewport after copy + chrome */
-    max-height: none;
     height: auto;
+    padding: 0.4rem;
   }
 
   .hero-frame img {
     width: 100%;
     height: auto;
-    max-height: min(48dvh, calc(100dvh - var(--nav-h) - var(--footer-h) - 11rem));
+    max-height: min(50dvh, calc(100dvh - var(--nav-h) - var(--footer-h) - 10.5rem));
     flex: none;
   }
 
   .hero-frame figcaption {
-    margin-top: 0.4rem;
-    font-size: 0.7rem;
+    margin-top: 0.35rem;
+    font-size: 0.68rem;
   }
 }
 
-@media (max-height: 700px) and (max-width: 899px) {
+/* Short phones / landscape phones */
+@media (max-height: 680px) and (max-width: 759px) {
   .hero-copy .eyebrow {
     display: none;
   }
 
   .hero-copy h1 {
-    font-size: 1.4rem;
+    font-size: clamp(1.25rem, 5vw, 1.45rem);
   }
 
   .hero-copy .subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 0.6rem;
+    font-size: 0.88rem;
+    margin-bottom: 0.5rem;
   }
 
   .hero-frame figcaption {
@@ -482,7 +507,52 @@ main {
   }
 
   .hero-frame img {
-    max-height: min(42dvh, calc(100dvh - var(--nav-h) - var(--footer-h) - 8.5rem));
+    max-height: min(44dvh, calc(100dvh - var(--nav-h) - var(--footer-h) - 7.5rem));
+  }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+  .page-home {
+    overflow: auto;
+    height: auto;
+    max-height: none;
+    min-height: 100dvh;
+  }
+
+  .page-home .home-main {
+    overflow: visible;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1rem;
+    height: auto;
+    max-height: none;
+    min-height: calc(100dvh - var(--nav-h) - var(--footer-h) - 0.5rem);
+    text-align: left;
+    align-items: center;
+  }
+
+  .hero-copy {
+    text-align: left;
+    max-width: none;
+  }
+
+  .hero-copy .btn {
+    margin-inline: 0;
+  }
+
+  .hero-frame {
+    max-width: none;
+  }
+
+  .hero-frame img {
+    max-height: calc(100dvh - var(--nav-h) - var(--footer-h) - 2rem);
+  }
+
+  .hero-frame figcaption {
+    display: none;
   }
 }
 
@@ -501,12 +571,12 @@ main {
   max-width: 32rem;
 }
 
-/* —— Gallery grid —— */
+/* —— Gallery grid (fluid columns) —— */
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1.5rem, 3vw, 2.75rem) clamp(1rem, 2vw, 2rem);
-  padding-bottom: var(--space);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  gap: clamp(1.15rem, 2.5vw, 2.75rem) clamp(0.85rem, 2vw, 2rem);
+  padding-bottom: calc(var(--space) + var(--safe-bottom));
 }
 
 .work-card {
@@ -1925,72 +1995,29 @@ body.view-modal-open {
   }
 }
 
-/* —— Tablet —— */
-@media (max-width: 960px) {
-  :root {
-    --nav-h: 4rem;
-    --footer-h: 2.5rem;
-  }
-
-  .work-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .piece-layout {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    align-items: start;
-    min-height: 0;
-    padding-top: 1.25rem;
-  }
-
-  .view-stage--piece .view-canvas {
-    min-height: min(48dvh, 22rem);
-    max-height: min(55dvh, 28rem);
-    aspect-ratio: auto;
-    height: min(50dvh, 26rem);
-  }
-
-  .piece-info {
-    text-align: center;
-  }
-
-  .piece-info dl {
-    text-align: left;
-    max-width: 20rem;
-    margin-inline: auto;
-  }
-}
-
-/* —— Phone —— */
-@media (max-width: 720px) {
-  :root {
-    --nav-h: 3.75rem;
-    --footer-h: 2.5rem;
-  }
-
+/* —— Tablet & down: hamburger nav (prevents crowded links) —— */
+@media (max-width: 900px) {
   .nav-toggle {
     display: inline-flex;
-  }
-
-  .nav-toggle-bar {
-    width: 1.05rem;
   }
 
   .nav-links {
     display: none;
     position: absolute;
-    top: var(--nav-h);
+    top: calc(var(--nav-h) + var(--safe-top));
     left: 0;
     right: 0;
     flex-direction: column;
+    flex-wrap: nowrap;
     align-items: stretch;
+    justify-content: flex-start;
     gap: 0;
-    padding: 0.35rem var(--gutter) 1rem;
-    background: var(--white);
+    padding: 0.25rem var(--gutter) calc(0.85rem + var(--safe-bottom));
+    background: rgba(255, 255, 255, 0.98);
     border-bottom: 1px solid var(--line);
-    max-height: calc(100dvh - var(--nav-h));
+    max-height: calc(100dvh - var(--nav-h) - var(--safe-top));
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .nav-links.is-open {
@@ -1998,29 +2025,126 @@ body.view-modal-open {
   }
 
   .nav-links a {
-    padding: 0.85rem 0;
+    padding: 0.9rem 0.15rem;
     border-bottom: 1px solid var(--line);
     font-size: 0.8rem;
+    letter-spacing: 0.12em;
   }
 
-  .btn {
-    padding: 0.7rem 1.15rem;
-    width: 100%;
-    max-width: 18rem;
+  .nav-links li:last-child a {
+    border-bottom: none;
   }
 
-  .work-grid {
+  .piece-layout {
     grid-template-columns: 1fr;
-    max-width: 380px;
+    gap: 1.25rem;
+    align-items: start;
+    min-height: 0;
+    padding: 1rem 0 calc(1.5rem + var(--safe-bottom));
+  }
+
+  .view-stage--piece .view-canvas {
+    min-height: min(42dvh, 20rem);
+    max-height: min(52dvh, 26rem);
+    aspect-ratio: auto;
+    height: min(48dvh, 24rem);
+  }
+
+  .piece-info {
+    text-align: center;
+  }
+
+  .piece-info h1 {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+
+  .piece-info dl {
+    text-align: left;
+    max-width: 20rem;
     margin-inline: auto;
   }
 
   .page-intro {
-    padding: 1.75rem 0 1.25rem;
+    padding: clamp(1.25rem, 4vw, 2rem) 0 1.15rem;
   }
 
-  .view-stage--piece .view-canvas {
-    height: min(46dvh, 22rem);
+  .page-screen main {
+    min-height: 0;
+    padding-bottom: var(--safe-bottom);
+  }
+
+  .content-block {
+    padding-bottom: calc(var(--space) * 0.85);
+  }
+
+  .form {
+    max-width: 100%;
+  }
+
+  .btn {
+    min-height: 2.75rem;
+  }
+
+  .work-slide-actions .btn {
+    min-height: 2.5rem;
+  }
+}
+
+/* Phone: gallery single column, fuller-width buttons in forms */
+@media (max-width: 560px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+    max-width: min(100%, 400px);
+    margin-inline: auto;
+  }
+
+  .page-screen .btn-block,
+  .form .btn {
+    width: 100%;
+    max-width: none;
+  }
+
+  .hero-copy .btn,
+  .piece-info .btn {
+    width: auto;
+    max-width: none;
+  }
+
+  .work-meta .title {
+    font-size: 1.1rem;
+  }
+
+  .view-modal-dialog {
+    width: min(100% - 0.75rem, 960px);
+    height: min(100dvh - 1rem, 900px);
+    padding-bottom: calc(0.5rem + var(--safe-bottom));
+  }
+
+  .view-modal-stage .view-panel {
+    padding: 0.45rem;
+  }
+
+  .slide-peek-panel {
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .brand {
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-copy h1 {
+    font-size: 1.35rem;
+  }
+
+  .btn {
+    letter-spacing: 0.1em;
+    font-size: 0.68rem;
+    padding: 0.65rem 1rem;
   }
 }
 
