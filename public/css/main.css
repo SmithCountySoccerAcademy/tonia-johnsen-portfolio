@@ -1583,7 +1583,9 @@ body.view-modal-open {
 /* —— Available Work: full-screen snap per painting ——
    Mobile uses in-flow layout (art → meta → peek).
    Desktop keeps side-by-side art/meta with a bottom peek strip. */
-.page-available {
+/* Available Work + Gallery full-screen snap */
+.page-available,
+.page-gallery {
   /* svh = stable mobile viewport (avoids URL-bar jump breaking snap) */
   height: 100svh;
   max-height: 100svh;
@@ -1592,7 +1594,8 @@ body.view-modal-open {
   overflow: hidden;
 }
 
-.page-available .site-header {
+.page-available .site-header,
+.page-gallery .site-header {
   position: fixed;
   top: 0;
   left: 0;
@@ -1600,7 +1603,8 @@ body.view-modal-open {
   width: 100%;
 }
 
-.page-available main {
+.page-available main,
+.page-gallery main {
   flex: none;
   min-height: 0;
 }
@@ -2116,6 +2120,7 @@ body.view-modal-open {
 
 @supports not (height: 100dvh) {
   .page-available,
+  .page-gallery,
   .snap-scroller,
   .snap-slide {
     height: 100vh;

@@ -4,7 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Gallery · Tonia Johnsen</title>
-    <meta name="description" content="Gallery of original paintings by Tonia Johnsen." />
+    <meta
+      name="description"
+      content="Gallery of original paintings by Tonia Johnsen."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,7 +16,7 @@
     />
     <link rel="stylesheet" href="/css/main.css" />
   </head>
-  <body>
+  <body class="page-gallery">
     <header class="site-header">
       <div class="wrap nav">
         <a class="brand" href="/">Tonia Johnsen</a>
@@ -38,27 +41,23 @@
       </div>
     </header>
 
-    <main>
-      <div class="wrap">
-        <header class="page-intro">
-          <h1>Gallery</h1>
-          <p>Selected works</p>
-        </header>
-        <div class="work-grid" id="gallery-grid">
-          <div class="skeleton"></div>
-          <div class="skeleton"></div>
-          <div class="skeleton"></div>
-        </div>
-      </div>
+    <main
+      class="snap-scroller"
+      id="gallery-snap"
+      tabindex="0"
+      aria-label="Gallery paintings"
+    >
+      <!-- Full-screen slides injected by gallery.js -->
     </main>
 
-    <footer class="site-footer">
-      <div class="wrap footer-inner">
-        <span>&copy; <span id="year"></span> Tonia Johnsen</span>
-      </div>
-    </footer>
+    <div class="snap-progress" id="snap-progress" aria-live="polite" hidden>
+      <span id="snap-index">1</span>
+      <span class="snap-progress-sep">/</span>
+      <span id="snap-total">1</span>
+    </div>
 
     <script src="/js/site.js"></script>
+    <script src="/js/views.js"></script>
     <script src="/js/gallery.js"></script>
   </body>
 </html>
