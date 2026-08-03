@@ -369,11 +369,13 @@ main {
   overflow: hidden;
 }
 
-/* Left: type block */
+/* Left: type block — inset so it doesn’t hug the viewport edge */
 .hero-copy {
   min-width: 0;
   max-width: 22rem;
   padding-bottom: 0.25rem;
+  padding-left: clamp(0.5rem, 3vw, 2.5rem);
+  margin-left: clamp(0.25rem, 2vw, 1.5rem);
 }
 
 .hero-kicker {
@@ -497,6 +499,8 @@ main {
 
   .hero-copy {
     max-width: 20rem;
+    padding-left: 0;
+    margin-left: 0;
   }
 
   .hero-copy h1 {
